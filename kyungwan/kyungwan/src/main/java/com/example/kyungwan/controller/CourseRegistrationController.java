@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.*;
 public class CourseRegistrationController {
     private final CourseRegistrationService courseRegistrationService;
 
-    @PostMapping("/student{studentNumber}/lecture/{lectureId)")
-    public ResponseEntity<Void> LectureRegistration(@PathVariable Long studentNumber, @PathVariable Long lectureId) {
-        courseRegistrationService.CourseRegistration(studentNumber, lectureId);
+    @PostMapping("/student/{studentId}/lecture/{lectureId}")
+    public ResponseEntity<Void> CourseRegistration(@PathVariable Long studentId, @PathVariable Long lectureId) {
+        courseRegistrationService.CourseRegistration(studentId, lectureId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/student/{studentNumber}/lectures")
-    public ResponseEntity<CourseRegisteredLecturesResponseDto> getLecturesByStudentNumber(@PathVariable Long studentNumber) {
-        CourseRegisteredLecturesResponseDto lecturesResponse = courseRegistrationService.getLecturesByStudent(studentNumber);
+    @GetMapping("/student/{studentId}/lectures")
+    public ResponseEntity<CourseRegisteredLecturesResponseDto> getLecturesByStudentNumber(@PathVariable Long studentId) {
+        CourseRegisteredLecturesResponseDto lecturesResponse = courseRegistrationService.getLecturesByStudent(studentId);
         return  ResponseEntity.ok(lecturesResponse);
     }
 
@@ -32,9 +32,9 @@ public class CourseRegistrationController {
         return  ResponseEntity.ok(studentResponse);
     }
 
-    @DeleteMapping("/student/{studentNumber}/lecture/{lectureId}")
-    public ResponseEntity<Void> resetLectureRegistration(@PathVariable Long studentNumber, @PathVariable Long lectureId) {
-        courseRegistrationService.resetCourseRegistration(studentNumber,lectureId);
+    @DeleteMapping("/student/{studentId}/lecture/{lectureId}")
+    public ResponseEntity<Void> resetLectureRegistration(@PathVariable Long studentId, @PathVariable Long lectureId) {
+        courseRegistrationService.resetCourseRegistration(studentId,lectureId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

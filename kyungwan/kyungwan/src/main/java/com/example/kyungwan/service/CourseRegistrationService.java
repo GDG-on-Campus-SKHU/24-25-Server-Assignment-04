@@ -26,7 +26,7 @@ public class CourseRegistrationService {
 
     @Transactional
     public void CourseRegistration(Long studentId, Long lectureId) {
-        if (CourseRegistrationRepository.existsById(studentId, lectureId)) {
+        if (courseRegistrationRepository.existsByStudentIdAndLectureId(studentId, lectureId)) {
             throw new IllegalArgumentException("이미 수강 신청한 강의입니다.");
         }
 
@@ -36,7 +36,7 @@ public class CourseRegistrationService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 강의입니다."));
 
         CourseRegistration courseRegistration = CourseRegistration.of(student, lecture);
-        CourseRegistrationRepository.save(courseRegistration);
+        courseRegistrationRepository.save(courseRegistration);
     }
 
     @Transactional
@@ -61,10 +61,10 @@ public class CourseRegistrationService {
 
     @Transactional
     public void resetCourseRegistration(Long studentId, Long lectureId) {
-        if(!courseRegistrationRepository.existsById(studentId, lectureId)) {
+        if(!courseRegistrationRepository.existsByStudentIdAndLectureId(studentId, lectureId)) {
             throw new IllegalArgumentException("수강 신청 내역이 없습니다.");
         }
-        courseRegistrationRepository.deleteById(studentId, lectureId);
+        courseRegistrationRepository.deleteByStudentIdAndLectureId(studentId, lectureId);
     }
 
 }

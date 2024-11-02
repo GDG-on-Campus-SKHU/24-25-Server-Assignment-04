@@ -10,5 +10,5 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class CourseRegisteredStudentsResponseDto {
-    private List<CourseRegisteredStudentsResponseDto> students;
+    private List<CourseRegisteredStudentForLectureDto> students;
 }
