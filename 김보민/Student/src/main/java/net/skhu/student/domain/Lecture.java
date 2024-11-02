@@ -18,9 +18,9 @@ public class Lecture {//강의 정보
     @OneToMany(mappedBy="lecture", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments = new ArrayList<>();
 
-    @Builder
-    public Lecture(Long id, String title, Long number, List<Enrollment> enrollments){
-        this.id=id;
+    @Builder//builder를 통해 객체를 생성하고 있음
+    public Lecture(String title, Long number, List<Enrollment> enrollments){
+        //id는 이미 생성되어 있음. 자동으로 생성해줌. this.id=id;
         this.title=title;
         this.number=number;
         this.enrollments = enrollments;

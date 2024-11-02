@@ -3,9 +3,7 @@ import lombok.Builder;
 import lombok.Getter;
 import net.skhu.student.domain.Enrollment;
 import net.skhu.student.domain.Lecture;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Builder
@@ -22,11 +20,5 @@ public class LectureInfoResponseDto {
                 .number(lecture.getNumber())
                 .enrollments(lecture.getEnrollments())
                 .build();
-    }
-
-    public static List<LectureInfoResponseDto> from(List<Lecture> lectures){
-        return lectures.stream()
-                .map(LectureInfoResponseDto::from)
-                .collect(Collectors.toList());
     }
 }

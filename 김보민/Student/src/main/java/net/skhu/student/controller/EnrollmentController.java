@@ -35,11 +35,9 @@ public class EnrollmentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
     @GetMapping
     public ResponseEntity<EnrollmentListResponseDto> findAllEnrollments(){
         return new ResponseEntity<>(enrollmentService.findAllEnrollments(), HttpStatus.OK);
     }
-
-
-
 }

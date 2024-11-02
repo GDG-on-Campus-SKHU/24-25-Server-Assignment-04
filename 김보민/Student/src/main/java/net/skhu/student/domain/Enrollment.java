@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 @Entity
 @Getter
 @NoArgsConstructor//기본생성자 생성
-@Builder
 public class Enrollment {//수강신청 정보
 
     @Id
@@ -25,11 +24,12 @@ public class Enrollment {//수강신청 정보
     @JoinColumn(name = "lecture_id") // 수강 강의
     private Lecture lecture;
 
-    public Enrollment(Long id,String title, Long date, Student student, Lecture lecture) {
-        this.id = id;
+    @Builder
+    public Enrollment(String title, Long date, Student student, Lecture lecture) {
         this.title=title;
         this.date = date;
         this.student = student;
         this.lecture = lecture;
     }
+
 }

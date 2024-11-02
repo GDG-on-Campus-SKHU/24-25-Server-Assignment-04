@@ -1,5 +1,4 @@
 package net.skhu.student.service;
-
 import lombok.RequiredArgsConstructor;
 import net.skhu.student.domain.Lecture;
 import net.skhu.student.dto.request.LectureSaveRequestDto;
@@ -21,6 +20,13 @@ public class LectureService {
         return LectureInfoResponseDto.from(lecture);
     }
 
+    @Transactional(readOnly = true)
+    public LectureInfoResponseDto findByLectureId(Long lectureId) {
+        Lecture lecture = lectureRepository.findById(lectureId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 강의입니다."));
+        return LectureInfoResponseDto.from(lecture);
+    }
+
     @Transactional
     public LectureInfoResponseDto updateByLectureId(Long lectureId, LectureSaveRequestDto lectureSaveRequestDto){
         Lecture lecture = lectureRepository.findById(lectureId)
@@ -29,4 +35,10 @@ public class LectureService {
         lecture.update(lectureSaveRequestDto.getTitle(), lectureSaveRequestDto.getNumber());
         return LectureInfoResponseDto.from(lecture);
     }
+
+    @Transactional
+    public void deleteByLectureId(Long lectureId){
+        lectureRepository.deleteById(lectureId);
+    }
+
 }

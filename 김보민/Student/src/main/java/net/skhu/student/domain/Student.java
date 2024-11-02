@@ -22,10 +22,14 @@ public class Student {//학생 정보
     private List<Enrollment> enrollments = new ArrayList<>();
 
     @Builder
-    public Student(Long id, String name, Long number, List<Enrollment> enrollments){
-        this.id=id;
+    public Student(String name, Long number, List<Enrollment> enrollments){
         this.name = name;
         this.number = number;
         this.enrollments=enrollments;
+    }
+
+    public void update(String name, Long number){ //수정 필요하면 고치기
+        this.name=name;
+        this.number=number;
     }
 }
