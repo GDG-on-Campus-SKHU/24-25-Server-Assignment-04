@@ -1,5 +1,4 @@
 package net.skhu.student.controller;
-
 import lombok.RequiredArgsConstructor;
 import net.skhu.student.dto.request.EnrollmentSaveRequestDto;
 import net.skhu.student.dto.request.LectureSaveRequestDto;
