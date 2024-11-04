@@ -17,22 +17,26 @@ import org.springframework.web.bind.annotation.*;
 public class EnrollmentController {
     private final EnrollmentService enrollmentService;
 
+    // 수강신청 정보를 저장하기 위한 post
     @PostMapping
     public ResponseEntity<EnrollmentInfoResponseDto> enrollstudent(@RequestBody EnrollmentSaveRequestDto enrollmentSaveRequestDto){
         return new ResponseEntity<>(enrollmentService.enrollstudent(enrollmentSaveRequestDto), HttpStatus.CREATED);
     }
 
+    // 특정 수강신청 정보를 조회하기 위한 get
     @GetMapping("/{enrollmentId}")
     public ResponseEntity<EnrollmentInfoResponseDto> findByEnrollmentId(@PathVariable Long enrollmentId){
         return new ResponseEntity<>(enrollmentService.findByEnrollmentId(enrollmentId), HttpStatus.OK);
     }
 
+    // 특정 수강신청 정보를 삭제하기 위한 delete
     @DeleteMapping("/{enrollmentId}")
     public ResponseEntity<EnrollmentInfoResponseDto> deleteByEnrollmentId(@PathVariable Long enrollmentId){
         enrollmentService.deleteEnrollment(enrollmentId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // 수강신청 전체 목록을 조회하기 위한 get
     @GetMapping
     public ResponseEntity<EnrollmentListResponseDto> findAllenroll() {
         return new ResponseEntity<>(enrollmentService.findAllenroll(), HttpStatus.OK);

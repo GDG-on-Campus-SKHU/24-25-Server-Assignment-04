@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class CourseService {
     private final CourseRepository courseRepository;
 
+    //강의 추가
     @Transactional
     public CourseInfoResponseDto save(CourseSaveRequestDto courseSaveRequestDto){
         Course course = courseSaveRequestDto.toEntity();
@@ -23,6 +24,7 @@ public class CourseService {
         return CourseInfoResponseDto.from(course);
     }
 
+    //강의 조회
     @Transactional(readOnly = true)
     public CourseInfoResponseDto findByCourseId(Long courseId){
         Course course = courseRepository.findById(courseId)
@@ -30,6 +32,7 @@ public class CourseService {
         return CourseInfoResponseDto.from(course);
     }
 
+    //강의 수정
     @Transactional
     public CourseInfoResponseDto updateByCourseId(Long courseId, CourseSaveRequestDto courseSaveRequestDto){
         Course course = courseRepository.findById(courseId)
@@ -38,6 +41,7 @@ public class CourseService {
         return CourseInfoResponseDto.from(course);
     }
 
+    //강의 삭제
     @Transactional
     public void deleteByCourseId(Long courseId){
         courseRepository.deleteById(courseId);

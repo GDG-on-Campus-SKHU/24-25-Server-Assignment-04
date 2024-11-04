@@ -50,6 +50,7 @@ public class EnrollmentService {
         enrollmentRepository.deleteById(enrollmentId);
     }
 
+    //전체수강신청 조회
     @Transactional(readOnly = true)
     public EnrollmentListResponseDto findAllenroll() {
         List<Enrollment> enrollments = enrollmentRepository.findAll();
