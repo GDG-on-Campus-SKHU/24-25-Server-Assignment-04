@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Id;
+
+//중간 테이블
 @Entity
 @Getter
 @NoArgsConstructor//기본생성자 생성
@@ -12,9 +14,6 @@ public class Enrollment {//수강신청 정보
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String title;
-    private Long date; //수강 신청 날짜
 
     @ManyToOne(fetch = FetchType.LAZY)//다대일 관계
     @JoinColumn(name = "student_id")// 두 엔티티 연결하는 외래키 컬럼 지정. 수강 학생
@@ -25,11 +24,9 @@ public class Enrollment {//수강신청 정보
     private Lecture lecture;
 
     @Builder
-    public Enrollment(String title, Long date, Student student, Lecture lecture) {
-        this.title=title;
-        this.date = date;
-        this.student = student;
-        this.lecture = lecture;
+    public Enrollment(Long id, Student student, Lecture lecture){
+        this.id=id;
+        this.student=student;
+        this.lecture=lecture;
     }
-
 }

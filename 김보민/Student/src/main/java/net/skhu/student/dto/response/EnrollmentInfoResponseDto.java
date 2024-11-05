@@ -10,8 +10,6 @@ import net.skhu.student.domain.Enrollment;
 @AllArgsConstructor
 public class EnrollmentInfoResponseDto {
     private Long id;
-    private String title;
-    private Long date;
     private Long studentId;
     private String studentName;
     private Long lectureId;
@@ -20,8 +18,6 @@ public class EnrollmentInfoResponseDto {
     public static EnrollmentInfoResponseDto from(Enrollment enrollment){
         return EnrollmentInfoResponseDto.builder()
                 .id(enrollment.getId())
-                .title(enrollment.getTitle())
-                .date(enrollment.getDate())
                 .studentId(enrollment.getStudent().getId())
                 .studentName(enrollment.getStudent().getName())
                 .lectureId(enrollment.getLecture().getId())

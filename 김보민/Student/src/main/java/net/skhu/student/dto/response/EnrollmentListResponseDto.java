@@ -3,6 +3,7 @@ import lombok.Builder;
 import lombok.Getter;
 import java.util.List;
 //수강신청 정보를 하나의 응답으로 담아 전송
+
 @Builder
 @Getter
 public class EnrollmentListResponseDto {

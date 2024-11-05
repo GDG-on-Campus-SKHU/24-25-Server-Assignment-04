@@ -1,5 +1,4 @@
 package net.skhu.student.repository;
-
 import net.skhu.student.domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
