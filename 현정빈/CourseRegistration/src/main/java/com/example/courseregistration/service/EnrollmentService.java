@@ -25,7 +25,7 @@ public class EnrollmentService {
 
     //수강신청 생성
     @Transactional
-    public EnrollmentInfoResponseDto enrollstudent(EnrollmentSaveRequestDto enrollmentSaveRequestDto){
+    public EnrollmentInfoResponseDto enrollStudent(EnrollmentSaveRequestDto enrollmentSaveRequestDto){
         Student student = studentRepository.findById(enrollmentSaveRequestDto.getStudentId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 학생입니다."));
         Course course = courseRepository.findById(enrollmentSaveRequestDto.getCourseId())
@@ -52,7 +52,7 @@ public class EnrollmentService {
 
     //전체수강신청 조회
     @Transactional(readOnly = true)
-    public EnrollmentListResponseDto findAllenroll() {
+    public EnrollmentListResponseDto findAllEnrollments() {
         List<Enrollment> enrollments = enrollmentRepository.findAll();
 
         List<EnrollmentInfoResponseDto> enrollmentInfoResponseDto = enrollments.stream()

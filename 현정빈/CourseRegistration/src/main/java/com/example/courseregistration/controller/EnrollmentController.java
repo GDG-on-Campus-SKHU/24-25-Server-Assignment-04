@@ -19,8 +19,8 @@ public class EnrollmentController {
 
     // 수강신청 정보를 저장하기 위한 post
     @PostMapping
-    public ResponseEntity<EnrollmentInfoResponseDto> enrollstudent(@RequestBody EnrollmentSaveRequestDto enrollmentSaveRequestDto){
-        return new ResponseEntity<>(enrollmentService.enrollstudent(enrollmentSaveRequestDto), HttpStatus.CREATED);
+    public ResponseEntity<EnrollmentInfoResponseDto> enrollStudent(@RequestBody EnrollmentSaveRequestDto enrollmentSaveRequestDto){
+        return new ResponseEntity<>(enrollmentService.enrollStudent(enrollmentSaveRequestDto), HttpStatus.CREATED);
     }
 
     // 특정 수강신청 정보를 조회하기 위한 get
@@ -38,7 +38,7 @@ public class EnrollmentController {
 
     // 수강신청 전체 목록을 조회하기 위한 get
     @GetMapping
-    public ResponseEntity<EnrollmentListResponseDto> findAllenroll() {
-        return new ResponseEntity<>(enrollmentService.findAllenroll(), HttpStatus.OK);
+    public ResponseEntity<EnrollmentListResponseDto> findAllEnrollments() {
+        return new ResponseEntity<>(enrollmentService.findAllEnrollments(), HttpStatus.OK);
     }
 }
